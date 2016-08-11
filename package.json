@@ -6,11 +6,13 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline",
     "test": "live-server --open=./SpecRunner.html --port=8081"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
     "jquery": "^2.2.1",
+    "live-server": "^1.0.0",
     "lodash": "^4.6.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
