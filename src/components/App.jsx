@@ -9,11 +9,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.searchYoutubeVideos('あーだこーだそーだ！');
+    this.fetchYoutubeVideos('あーだこーだそーだ！');
   }
 
-  searchYoutubeVideos(query) {
-    searchYouTube(query, (result) => {
+  fetchYoutubeVideos(query) {
+    this.props.searchYouTube({key: this.props.YOUTUBE_API_KEY, query}, (result) => {
       this.setState({
         videoPlayer: result[0],
         videoList: result
