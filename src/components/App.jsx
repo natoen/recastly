@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   fetchYoutubeVideos(query) {
-    this.props.searchYouTube({key: this.props.YOUTUBE_API_KEY, query}, (result) => {
+    this.props.searchYouTube({key: this.props.API_KEY, query}, result => {
       this.setState({
         videoPlayer: result[0],
         videoList: result
@@ -30,14 +30,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav search={query => setTimeout(() => this.fetchYoutubeVideos(query), 500)} />
         <div className="col-md-7">
           <VideoPlayer video={this.state.videoPlayer} />
         </div>
         <div className="col-md-5">
           <VideoList
             videos={this.state.videoList}
-            videoClick={(video) => this.videoClick(video)}
+            videoClick={video => this.videoClick(video)}
           />
         </div>
       </div>
@@ -45,6 +45,4 @@ class App extends React.Component {
   }
 }
 
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
 window.App = App;
